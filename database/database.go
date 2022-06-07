@@ -9,7 +9,7 @@ import (
 var db *gorm.DB
 
 func InitDB() error {
-	_db, err := gorm.Open(postgres.Open("user=postgres password=Supadata1003/! host=db.xnhdcwxcwbbyexwldjzj.supabase.co TimeZone=Asia/Singapore port=5432 dbname=postgres "), &gorm.Config{})
+	_db, err := gorm.Open(postgres.Open("user=postgres password=Supadata1003/! host=db.xnhdcwxcwbbyexwldjzj.supabase.co TimeZone=Asia/Singapore port=5432 dbname=postgres"), &gorm.Config{})
 	if err != nil {
 		return err
 	}
