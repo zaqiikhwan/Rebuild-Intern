@@ -7,6 +7,11 @@ import (
 
 func InitGin() *gin.Engine {
 	app := gin.Default()
+	app.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Hello World!",
+		})
+	})
 	app.Use(cors.CORSPreflightMiddleware())
 	ArticleDomainRouter(app)
 	ClinicDomainRouter(app)
