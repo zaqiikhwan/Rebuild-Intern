@@ -1,1 +1,1 @@
-build: go build -o bin/rebuild-intern main.go
+build: go build -o bin/Rebuild-Intern main.go
