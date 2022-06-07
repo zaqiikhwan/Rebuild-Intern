@@ -1,1 +1,1 @@
-web: bin/Rebuild-Intern
+web: bin/RebuildIntern
