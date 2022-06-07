@@ -14,5 +14,5 @@ func main() {
 		return
 	}
 	app := routers.InitGin()
-	app.Run(":8080")
+	app.Run()
 }
