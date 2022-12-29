@@ -100,9 +100,9 @@ func DoctorLogin(c *gin.Context) {
 }
 
 func GetDoctor(c *gin.Context) {
-	id, _ := c.Get("id")
-	doctor := domain.Doctor{}
-	if result := database.GetDB().Where("id = ?", id).Take(&doctor); result.Error != nil {
+	// id, _ := c.Get("id")
+	var doctors []domain.Doctor
+	if result := database.GetDB().Find(&doctors); result.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success": false,
 			"message": "Error when querying the database.",
@@ -113,7 +113,7 @@ func GetDoctor(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": "Query successful",
-		"data":    doctor,
+		"data":    doctors,
 	})
 }
 

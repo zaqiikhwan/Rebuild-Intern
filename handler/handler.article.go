@@ -82,10 +82,13 @@ func GetArticleByCategory(c *gin.Context) {
 }
 
 func SearchArticleUsingQuery(c *gin.Context) {
+	trx := database.GetDB()
+	
 	title, isTitleExists := c.GetQuery("title")
 	category, isCategoryExists := c.GetQuery("category")
+
 	var queryResults []domain.Article
-	trx := database.GetDB()
+	
 	if isTitleExists {
 		trx = trx.Where("title LIKE ?", "%"+title+"%")
 	}
