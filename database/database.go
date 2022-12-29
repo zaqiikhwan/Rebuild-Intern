@@ -14,8 +14,6 @@ import (
 var db *gorm.DB
 
 func InitDB() error {
-	// postgres://database_petlink_user:dV9cwr1wcVEhH3KsMf6QdSbHa4g2olSH@dpg-cemlf782i3molpj8srrg-a.singapore-postgres.render.com/database_petlink
-	// "user=postgres password=Supadata1003/! host=db.xnhdcwxcwbbyexwldjzj.supabase.co TimeZone=Asia/Singapore port=5432 dbname=postgres"
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
