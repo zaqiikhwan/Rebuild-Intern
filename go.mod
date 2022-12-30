@@ -1,7 +1,7 @@
 module main.go
 
-// +heroku goVersion go1.17
-go 1.17
+// +heroku goVersion go1.19
+go 1.19
 
 require gorm.io/gorm v1.23.4
 
