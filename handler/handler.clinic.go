@@ -55,22 +55,17 @@ func GetAllDataClinic(c *gin.Context) {
 }
 
 func SearchClinicUsingQuery(c *gin.Context) {
-	location, isLocationExists := c.GetQuery("Location")
-	if !isLocationExists {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
-			"message": "Query is not supplied.",
-		})
-		return
-	}
+	location, isLocationExist := c.GetQuery("location")
 
 	var queryResults []domain.Scrape
-	trx := database.GetDB()
-	if isLocationExists {
-		trx = trx.Where("Location = ?", location)
+	db := database.GetDB()
+
+	if isLocationExist {
+		search := "%" + location + "%"
+		db = db.Where("location ILIKE ?", search)
 	}
 
-	if result := trx.Find(&queryResults); result.Error != nil {
+	if result := db.Find(&queryResults); result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
 			"message": "Query is not supplied.",
@@ -83,5 +78,6 @@ func SearchClinicUsingQuery(c *gin.Context) {
 		"success": true,
 		"message": "Search successful",
 		"data":    queryResults,
+		"search": location,
 	})
 }

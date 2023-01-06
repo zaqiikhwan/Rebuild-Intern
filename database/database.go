@@ -2,10 +2,10 @@ package database
 
 import (
 	"fmt"
-	_"log"
+	_ "log"
 	"os"
 
-	_"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"main.go/domain"

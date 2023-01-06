@@ -10,7 +10,7 @@ func ClinicDomainRouter(app *gin.Engine) *gin.RouterGroup {
 	{
 		clinicGroup.POST("", handler.SearchClinicbyLocation)
 		clinicGroup.GET("", handler.GetAllDataClinic)
-		clinicGroup.GET("/search", handler.SearchClinicUsingQuery)
+		clinicGroup.POST("/search", handler.SearchClinicUsingQuery)
 	}
 	return clinicGroup
 }
