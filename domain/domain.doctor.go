@@ -6,6 +6,7 @@ type Doctor struct {
 	Email       string  `json:"email"`
 	Jadwal      string  `json:"jadwal"`
 	LokasiKerja string  `json:"lokasi_kerja"`
+	Picture     string  `json:"picture"`
 	Meet        string  `json:"meet"`
 	Price       float64 `json:"price"`
 	Pengalaman  int     `json:"pengalaman"`

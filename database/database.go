@@ -29,6 +29,8 @@ func InitDB() error {
 	// os.Getenv("RENDER_HOST"),
 	// os.Getenv("RENDER_PORT"),
 	// os.Getenv("RENDER_DBNAME"))
+
+	// how connect database using render (PostgreSQL)
 	dsn := fmt.Sprintf("postgres://%s:%s@%s/%s", os.Getenv("RENDER_USER"), os.Getenv("RENDER_PASSWORD"), os.Getenv("RENDER_HOST"), os.Getenv("RENDER_DBNAME"))
 	_db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
