@@ -6,12 +6,6 @@ import (
 
 func InitGin() *gin.Engine {
 	app := gin.Default()
-	app.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "success",
-			"text":    "connected",
-		})
-	})
 	app.Use(func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		c.Writer.Header().Set("Access-Control-Max-Age", "86400")
@@ -24,6 +18,12 @@ func InitGin() *gin.Engine {
 		} else {
 			c.Next()
 		}
+	})
+	app.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "success",
+			"text":    "connected",
+		})
 	})
 	ArticleDomainRouter(app)
 	ClinicDomainRouter(app)
