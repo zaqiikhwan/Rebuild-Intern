@@ -5,8 +5,8 @@ import (
 )
 
 func InitGin() *gin.Engine {
-	app := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
+	app := gin.Default()
 	app.Use(func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "https://petlink-ahrmr31zv-avcna.vercel.app")
 		c.Writer.Header().Set("Access-Control-Max-Age", "86400")
