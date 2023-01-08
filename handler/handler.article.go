@@ -66,7 +66,7 @@ func GetArticleByCategory(c *gin.Context) {
 	}
 	var queryResults []domain.Article
 	trx := database.GetDB()
-	if result := trx.Where("Category = ?", body.Category).Find(&queryResults); result.Error != nil {
+	if result := trx.Where("Category ILIKE ?", body.Category).Find(&queryResults); result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
 			"message": "Query is not supplied.",
@@ -90,10 +90,10 @@ func SearchArticleUsingQuery(c *gin.Context) {
 	var queryResults []domain.Article
 	
 	if isTitleExists {
-		trx = trx.Where("title LIKE ?", "%"+title+"%")
+		trx = trx.Where("title ILIKE ?", "%"+title+"%")
 	}
 	if isCategoryExists {
-		trx = trx.Where("category LIKE ?", "%"+category+"%")
+		trx = trx.Where("category ILIKE ?", "%"+category+"%")
 	}
 
 	if result := trx.Find(&queryResults); result.Error != nil {

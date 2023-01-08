@@ -55,7 +55,7 @@ func GetAllDataClinic(c *gin.Context) {
 }
 
 func SearchClinicUsingQuery(c *gin.Context) {
-	location, isLocationExist := c.GetQuery("location")
+	location, isLocationExist := c.GetQuery("Location")
 
 	var queryResults []domain.Scrape
 	db := database.GetDB()

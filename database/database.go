@@ -2,10 +2,10 @@ package database
 
 import (
 	"fmt"
-	_ "log"
+	"log"
 	"os"
 
-	_ "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"main.go/domain"
@@ -14,10 +14,10 @@ import (
 var db *gorm.DB
 
 func InitDB() error {
-	// err := godotenv.Load()
-	// if err != nil {
-	// 	log.Fatal("Error loading .env file")
-	// }
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	// dsn := fmt.Sprintf(
 	// 	"user=%s " + 
 	// 	"password=%s " + 
