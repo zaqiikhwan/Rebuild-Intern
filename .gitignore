@@ -2,3 +2,4 @@
 config
 bin
 Buildfile
+auth

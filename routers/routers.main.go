@@ -1,14 +1,19 @@
 package routers
 
 import (
+	"net/http"
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
 func InitGin() *gin.Engine {
+	// change to release mode
 	gin.SetMode(gin.ReleaseMode)
 	app := gin.Default()
+	// configuration CORS
 	app.Use(func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "https://petlink-ahrmr31zv-avcna.vercel.app")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", os.Getenv("HOST"))
 		c.Writer.Header().Set("Access-Control-Max-Age", "86400")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "*")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
@@ -21,9 +26,9 @@ func InitGin() *gin.Engine {
 		}
 	})
 	app.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"message": "success",
-			"text":    "connected",
+			"text":    "api connected",
 		})
 	})
 	ArticleDomainRouter(app)
